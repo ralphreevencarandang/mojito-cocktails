@@ -5,14 +5,11 @@ import gsap from 'gsap'
 import { useMediaQuery } from 'react-responsive'
 
 const Art = () => {
-
   const isMobile = useMediaQuery({maxWidth: 767});
-
   useGSAP(()=>{
 
     const start = isMobile ? 'top 20%' : 'top top'
-    
-
+    // create a timeline for scroll trigger
      const maskTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: '#art',
@@ -24,16 +21,20 @@ const Art = () => {
       }
      })
 
+    // all will-fade classes will fade out with stagger
      maskTimeline
      .to('.will-fade',
       {opacity: 0, stagger: 0.2, ease: 'power1.inOut'
      })
+    //  make the masked-imag bigger so it will show the under image
      .to('.masked-img', 
       { scale: 1.3, 
         maskPosition: 'center',
         maskSize: '400%',
         duration: 1, 
-        ease: 'power1.inOut'}).to('#masked-content',{
+        ease: 'power1.inOut'})
+      // show the hide content
+      .to('#masked-content',{
           opacity: 1,
           ease: 'power1.inOut',
           duration:1

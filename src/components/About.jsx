@@ -8,6 +8,7 @@ const About = () => {
       // Split the about h2 into words
       const titleSplit =  SplitText.create('#about h2', {type: 'words'})
 
+      
       const scrollTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: '#about',
